@@ -3,7 +3,7 @@ import random
 
 class SlotMachine:
     def __init__(self):
-        self.symbols = ['🍇', '🍉', '🍋', '🍒', '💰']
+        self.symbols = ['💰', '🍇', '🍉', '🍋', '🍒']
         self.bet = 0
         self.balance = 0
 
@@ -34,7 +34,7 @@ class SlotMachine:
                 if win_fruit[0] == display[0][0]:
                     winning += 1
 
-        if display[1][0] == display[1][1] == display[1][2] == display[2][3]:
+        if display[1][0] == display[1][1] == display[1][2] == display[1][3]:
             if len(win_fruit) == 0:
                 win_fruit.append(display[1][0])
                 winning += 1
@@ -85,23 +85,32 @@ class SlotMachine:
         for row in display:
             print(*row)
 
+        extra_money = 0
+        if len(win_fruit) != 0:
+            if win_fruit[0] == self.symbols[0]:
+                extra_money += 1000
+            elif win_fruit[0] == self.symbols[1] or win_fruit[0] == self.symbols[2]:
+                extra_money += 500
+            elif win_fruit[0] == self.symbols[3] or win_fruit[0] == self.symbols[4]:
+                extra_money += 200
+
         if winning == 1:
-            winning = self.bet * 5
+            winning = (self.bet * 5) + extra_money
             print(f"YOU WON ${winning}")
         elif winning == 2:
-            winning = self.bet * 10
+            winning = (self.bet * 10) + extra_money
             print(f"YOU WON ${winning}")
         elif winning == 3:
-            winning = self.bet * 15
+            winning = (self.bet * 15) + extra_money
             print(f"YOU WON ${winning}")
         elif winning == 4:
-            winning = self.bet * 20
+            winning = (self.bet * 20) + extra_money
             print(f"YOU WON ${winning}")
         elif winning == 5:
-            winning = self.bet * 25
+            winning = (self.bet * 25) + extra_money
             print(f"YOU WON ${winning}")
         elif winning == 6:
-            winning = self.bet * 30
+            winning = (self.bet * 30) + extra_money
             print(f"YOU WON ${winning}")
         elif winning == 7:
             winning = self.bet * 100
@@ -109,6 +118,7 @@ class SlotMachine:
         else:
             winning = 0
             print("Sorry You didn't win this time.")
+
         self.balance += winning - self.bet
         print(f"Current Balance: ${self.balance}")
 
