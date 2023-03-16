@@ -23,65 +23,89 @@ class SlotMachine:
             spins = [random.choice(self.symbols) for _ in range(4)]
             display.append(spins)
 
-        grape = 0
-        watermelon = 0
-        lemon = 0
-        cherry = 0
-        dollars = 0
-
         print()
-        for row in range(len(display)):
-            for col in range(len(display) + 1):
-                if display[row][col] == self.symbols[0]:
-                    grape += 1
-                elif display[row][col] == self.symbols[1]:
-                    watermelon += 1
-                elif display[row][col] == self.symbols[2]:
-                    lemon += 1
-                elif display[row][col] == self.symbols[3]:
-                    cherry += 1
-                else:
-                    dollars += 1
+        winning = 0
+        win_fruit = []
+        if display[0][0] == display[0][1] == display[0][2] == display[0][3]:
+            if len(win_fruit) == 0:
+                win_fruit.append(display[0][0])
+                winning += 1
+            else:
+                if win_fruit[0] == display[0][0]:
+                    winning += 1
+
+        if display[1][0] == display[1][1] == display[1][2] == display[2][3]:
+            if len(win_fruit) == 0:
+                win_fruit.append(display[1][0])
+                winning += 1
+            else:
+                if win_fruit[0] == display[1][0]:
+                    winning += 1
+
+        if display[2][0] == display[2][1] == display[2][2] == display[2][3]:
+            if len(win_fruit) == 0:
+                win_fruit.append(display[2][0])
+                winning += 1
+            else:
+                if win_fruit[0] == display[2][0]:
+                    winning += 1
+
+        if display[0][0] == display[1][0] == display[2][0]:
+            if len(win_fruit) == 0:
+                win_fruit.append(display[0][0])
+                winning += 1
+            else:
+                if win_fruit[0] == display[0][0]:
+                    winning += 1
+
+        if display[0][1] == display[1][1] == display[2][1]:
+            if len(win_fruit) == 0:
+                win_fruit.append(display[0][1])
+                winning += 1
+            else:
+                if win_fruit[0] == display[0][1]:
+                    winning += 1
+
+        if display[0][2] == display[1][2] == display[2][2]:
+            if len(win_fruit) == 0:
+                win_fruit.append(display[0][2])
+                winning += 1
+            else:
+                if win_fruit[0] == display[0][2]:
+                    winning += 1
+
+        if display[0][3] == display[1][3] == display[2][3]:
+            if len(win_fruit) == 0:
+                win_fruit.append(display[0][3])
+                winning += 1
+            else:
+                if win_fruit[0] == display[0][3]:
+                    winning += 1
 
         for row in display:
             print(*row)
 
-        if 5 <= dollars <= 7:
+        if winning == 1:
             winning = self.bet * 5
             print(f"YOU WON ${winning}")
-        elif 8 <= dollars <= 11:
-            winning = self.bet * 8
-        elif dollars == 12:
-            winning = self.bet * 100 + 50000
+        elif winning == 2:
+            winning = self.bet * 10
+            print(f"YOU WON ${winning}")
+        elif winning == 3:
+            winning = self.bet * 15
+            print(f"YOU WON ${winning}")
+        elif winning == 4:
+            winning = self.bet * 20
+            print(f"YOU WON ${winning}")
+        elif winning == 5:
+            winning = self.bet * 25
+            print(f"YOU WON ${winning}")
+        elif winning == 6:
+            winning = self.bet * 30
+            print(f"YOU WON ${winning}")
+        elif winning == 7:
+            winning = self.bet * 100
             print(f"JACKPOT!!! YOU WON ${winning}!")
-
-        elif 5 <= grape <= 7:
-            winning = self.bet * 4
-            print(f"YOU WON ${winning}")
-        elif 8 <= grape <= 12:
-            winning = self.bet * 7
-            print(f"YOU WON ${winning}")
-
-        elif 5 <= watermelon <= 7:
-            winning = self.bet * 3
-            print(f"YOU WON ${winning}")
-        elif 8 <= watermelon <= 12:
-            winning = self.bet * 6
-            print(f"YOU WON ${winning}")
-
-        elif 5 <= lemon <= 7:
-            winning = self.bet * 2
-            print(f"YOU WON ${winning}")
-        elif 8 <= lemon <= 12:
-            winning = self.bet * 5
-            print(f"YOU WON ${winning}")
-
-        elif 5 <= cherry <= 7:
-            winning = self.bet * 1
-            print(f"YOU WON ${winning}")
-        elif 8 <= cherry <= 12:
-            winning = self.bet * 2
-            print(f"YOU WON ${winning}")
         else:
             winning = 0
             print("Sorry You didn't win this time.")
