@@ -1,5 +1,5 @@
 # Slot-Machine
-A slot machine is a gambling game with spinning reels. Those reels have symbols on them, which land randomly after you place a bet and spin the reels. To win money you need at least 5 the same symbols!
+A slot machine is a gambling game with spinning reels. Those reels have symbols on them, which land randomly after you place a bet and spin the reels. To win money you need at least 4 the same symbols in a row or 3 the same symbols in a column!
 <br/>
 <br/>
 [Click Here If You Want To Play](https://replit.com/@HristianBalevsk/Slot-Machine-1?v=1)
